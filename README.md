@@ -6,7 +6,6 @@ playableRepository interface:
 
 musictagRepository interface:
 - void add(MusicTag elem)
-- void delete(int id) throws NotFoundError
 - MusicTag? search(int id)
 - MusicTag[] getAll() <- might suffer modifications
 
@@ -16,7 +15,6 @@ Service interface:
 - Playable? searchPlayable(int id)
 - Playable[] getAllPlayable()
 - void add(MusicTag elem)
-- void deleteTag(int id) throws NotFoundError
 - MusicTag? searchTag(int id)
 - MusicTag[] getAllTags()
 - Playable create(Playable[] elements)

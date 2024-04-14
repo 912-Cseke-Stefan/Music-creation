@@ -1,8 +1,14 @@
-playableRepository interface:
-- void add(Playable elem)
+trackRepository interface:
+- void add(Track elem)
 - void delete(int id) throws NotFoundError
-- Playable? search(int id)
-- Playable[] getAll() <- might suffer modifications
+- Track? search(int id)
+- Track[] getAll() <- might suffer modifications
+
+songRepository interface:
+- void add(Song elem)
+- void delete(int id) throws NotFoundError
+- Song? search(int id)
+- Song[] getAll() <- might suffer modifications
 
 musictagRepository interface:
 - void add(MusicTag elem)

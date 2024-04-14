@@ -9,6 +9,12 @@ musictagRepository interface:
 - MusicTag? search(int id)
 - MusicTag[] getAll() <- might suffer modifications
 
+songBuilder interface:
+- *should have an internal list*
+- void add(Playable elem)
+- void remove(Playable or int)
+- Playable getList()
+
 Service interface:
 - void add(Playable elem)
 - void deletePlayable(int id)

@@ -39,6 +39,6 @@ Service interface:
 - Pull on local repository
 - Checkout local branch and work on it
 - Stage and commit as often as possible, and push when done
-- Create pull request on GitHub\ \
+- Create pull request on GitHub\ 
 For more details:\
 https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro#github-workflow

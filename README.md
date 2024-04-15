@@ -34,7 +34,11 @@ Service interface:
 *Playable* file format: .wav
 
 
-#### Niste tutoriale pentru Git:
-https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes \
-https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell \
-https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+#### How to do Git:
+- Create branch on GitHub
+- Pull on local repository
+- Checkout local branch and work on it
+- Stage and commit as often as possible, and push when done
+- Create pull request on GitHub
+For more details:\
+https://www.freecodecamp.org/news/how-to-use-git-and-github-in-a-team-like-a-pro#github-workflow

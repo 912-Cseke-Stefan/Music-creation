@@ -31,7 +31,7 @@ namespace MauiApp1.Repository
         {
             return (from track in tracks
                     where track.id == id
-                    select track).Take(1); //?
+                    select track).FirstOrDefault();
         }
 
         public Track[] getAll()

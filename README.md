@@ -22,14 +22,18 @@ songBuilder interface:
 - Playable getList()
 
 Service interface:
-- void add(Playable elem)
-- void deletePlayable(int id)
-- Playable? searchPlayable(int id)
-- Playable[] getAllPlayable()
+- void addTrack(Track elem)
+- void deleteTrack(Track elem)
+- Track? searchTrack(int id)
+- Track[] getAllTracks()
+- private void addSong(Song elem)
+- void deleteSong(Song elem)
+- Song? searchSong(int id)
+- Song[] getAllSongs()
 - void add(MusicTag elem)
 - MusicTag? searchTag(int id)
 - MusicTag[] getAllTags()
-- Playable create(Playable[] elements)
+- Song create(Track[] elements)
 
 *Playable* file format: .wav
 

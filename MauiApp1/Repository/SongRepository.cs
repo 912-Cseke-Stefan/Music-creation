@@ -31,7 +31,7 @@ namespace MauiApp1.Repository
         {
             return (from song in songs
                     where song.id == id
-                    select song).Take(1);
+                    select song).Take(1); //?
         }
 
         public Song[] getAll()

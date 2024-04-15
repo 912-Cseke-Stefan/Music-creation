@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
+//using Microsoft.Data.SqlClient;
 
 namespace MauiApp1.Repository
 {
     public class MusigTagRepository : IMusicTagRepository
     {
-        private SqlConnection conn;
+        //private SqlConnection conn;
+        private List<MusicTag> tags;
 
         private string getConnectionString()
         {
@@ -20,22 +21,26 @@ namespace MauiApp1.Repository
 
         public MusigTagRepository() 
         {
-            conn = new SqlConnection(getConnectionString());
+            //conn = new SqlConnection(getConnectionString());
+            tags = new List<MusicTag>();
         }
 
         public void add(MusicTag elem)
         {
-
+            tags.Add(elem);
         }
 
         public MusicTag? search(int id)
         {
-            return null;
+            return (from tag in tags
+                   where tag.id == id
+                   select tag).Take(1); //?
         }
 
         public MusicTag[] getAll()
         {
-            return [];
+            return (from tag in tags
+                   select tag).ToArray();
         }
     }
 }

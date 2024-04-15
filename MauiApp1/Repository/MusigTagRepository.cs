@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-//using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace MauiApp1.Repository
 {
     public class MusigTagRepository : IMusicTagRepository
     {
-        //private SqlConnection conn;
+        private SqlConnection conn;
         private List<MusicTag> tags;
 
         private string getConnectionString()

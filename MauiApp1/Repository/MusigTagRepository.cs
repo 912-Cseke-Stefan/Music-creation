@@ -13,5 +13,20 @@ namespace MauiApp1.Repository
         {
             
         }
+
+        public void add(MusicTag elem)
+        {
+
+        }
+
+        public MusicTag? search(int id)
+        {
+            return null;
+        }
+
+        public MusicTag[] getAll()
+        {
+            return [];
+        }
     }
 }

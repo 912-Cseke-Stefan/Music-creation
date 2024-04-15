@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MusicCreator.MainPageApp"
+             Title="NewPage1"
+             Shell.NavBarIsVisible="False">
+    
+    <VerticalStackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Drums"
+                   Margin="10"/>
+            <Button Text="Music" 
+                   Margin="10"/>
+            <Button Text="FX" 
+                   Margin="10"/>
+            <Button Text="Mic" 
+                   Margin="10"/>
+        </StackLayout>
+
+
+        <StackLayout>
+            <ListView x:Name="tracksListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding}" VerticalOptions="Center" />
+                                <Button Text="Delete" Clicked="OnDeleteClicked" CommandParameter="{Binding .}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Text="MASTER Track"
+                Clicked="GoToListenTrack"
+                WidthRequest="150"
+                Margin="10"
+                />
+        </StackLayout>
+        <Image
+            Source="dotnet_bot.png"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="dot net bot in a race car number eight" />
+
+        <Button
+            Text="Play"
+            Clicked="GoFromMainToLogInPage"
+            WidthRequest="60"
+            Margin="10"
+            />
+        
+         <!--Butonul asta e doar ca sa pot eu merge inapoi-->
+        <Button
+            Text="Back"
+            Clicked="GoFromMainToLogInPage"
+            />
+
+    </VerticalStackLayout>
+</ContentPage>

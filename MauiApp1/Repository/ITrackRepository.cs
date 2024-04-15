@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MauiApp1.Repository
 {
-    internal interface ITrackRepository
+    public interface ITrackRepository
     {
         void add(Track elem);
         void delete(Track elem);

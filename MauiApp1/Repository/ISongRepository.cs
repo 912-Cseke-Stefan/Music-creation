@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MauiApp1.Repository
 {
-    internal interface ISongRepository
+    public interface ISongRepository
     {
         void add(Song elem);
         void delete(Song elem);

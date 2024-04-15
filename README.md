@@ -1,12 +1,12 @@
 trackRepository interface:
 - void add(Track elem)
-- void delete(int id) throws NotFoundError
+- void delete(Track elem) throws Exception
 - Track? search(int id)
 - Track[] getAll() <- might suffer modifications
 
 songRepository interface:
 - void add(Song elem)
-- void delete(int id) throws NotFoundError
+- void delete(Track elem) throws Exception
 - Song? search(int id)
 - Song[] getAll() <- might suffer modifications
 

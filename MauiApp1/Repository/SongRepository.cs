@@ -44,7 +44,7 @@ namespace MusicCreator.Repository
         {
             // initializing connection
             conn = new SqlConnection(getConnectionString());
-            query = "select * from TRACK";
+            query = "select * from SONG";
 
             // creating database and tables if they do not exist already (from script)
             conn.Open();
@@ -69,8 +69,8 @@ namespace MusicCreator.Repository
             // filling dataset
             adapter = new SqlDataAdapter(query, conn);
             dataset = new DataSet();
-            adapter.Fill(dataset, "Track");
-            table = dataset.Tables["Track"]; // this should be a shallow copy
+            adapter.Fill(dataset, "Song");
+            table = dataset.Tables["Song"];
 
             // building commands for the adapter
             cmdBuild = new SqlCommandBuilder(adapter);
@@ -85,23 +85,24 @@ namespace MusicCreator.Repository
             row["artist"] = elem.getArtist();
             row["audio"] = elem.getSongData();
             table.Rows.Add(row);
-            adapter.Update(dataset);
+            adapter.Update(dataset, "Song");
         }
 
         public void delete(Song elem)
         {
             foreach (DataRow row in table.Rows)
             {
-                if ((int)row["track_id"] == elem.getId())
+                if ((int)row["song_id"] == elem.getId())
                     row.Delete();
             }
             dataset.AcceptChanges();
+            adapter.Update(dataset, "Song");
         }
 
         public Song? search(int id)
         {
             var elems = from DataRow row in table.Rows
-                        where (int)row["track_id"] == id // yeah, trust me bro
+                        where (int)row["song_id"] == id // yeah, trust me bro
                         select row;
 
             if (elems == null)

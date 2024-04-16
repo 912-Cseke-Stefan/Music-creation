@@ -1,8 +1,8 @@
-using MauiApp1.Repository;
+using MusicCreator.Repository;
 using Music.MusicDomain;
 using MusicCreator;
 
-namespace MauiApp1;
+namespace MusicCreator;
 
 public partial class SearchPage : ContentPage
 {

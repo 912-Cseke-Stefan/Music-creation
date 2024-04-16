@@ -1,6 +1,6 @@
 using MusicCreator;
 
-namespace MauiApp1;
+namespace MusicCreator;
 
 public partial class SaveConfirmationPage : ContentPage
 {

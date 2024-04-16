@@ -81,7 +81,7 @@ namespace MusicCreator.Repository
             //row["musictag_id"] = elem.getId();
             row["tag"] = elem.getTitle();
             table.Rows.Add(row);
-            adapter.Update(dataset);
+            adapter.Update(dataset, "MusicTag");
         }
 
         public MusicTag? search(int id)

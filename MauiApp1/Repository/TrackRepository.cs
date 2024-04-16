@@ -85,7 +85,7 @@ namespace MusicCreator.Repository
             row["track_type"] = elem.getType();
             row["audio"] = elem.getSongData();
             table.Rows.Add(row);
-            adapter.Update(dataset);
+            adapter.Update(dataset, "Track");
         }
 
         public void delete(Track elem)
@@ -96,6 +96,7 @@ namespace MusicCreator.Repository
                     row.Delete();
             }
             dataset.AcceptChanges();
+            adapter.Update(dataset, "Track");
         }
 
         public Track? search(int id)

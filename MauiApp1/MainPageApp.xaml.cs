@@ -29,5 +29,9 @@ public partial class MainPageApp : ContentPage
     {
 
     }
+    private async void OnDrumsClick(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Drums");
+    }
 
 }

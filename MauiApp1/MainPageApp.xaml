@@ -10,6 +10,7 @@
         <!-- Navigation Buttons -->
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
             <Button Text="Drums"
+                    Clicked="OnDrumsClick"
                     BackgroundColor="#007AFF"
                     TextColor="White"
                     CornerRadius="10"

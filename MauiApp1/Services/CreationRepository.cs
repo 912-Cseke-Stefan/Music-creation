@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Music.MusicDomain;
 using NAudio.Wave;
 
-namespace MauiApp1.Services
+namespace MusicCreator.Services
 {
     internal class CreationRepository : ICreationRepository
     {

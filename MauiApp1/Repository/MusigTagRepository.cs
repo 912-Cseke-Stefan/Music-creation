@@ -8,7 +8,7 @@ using Microsoft.Data.SqlClient;
 using Music.MusicDomain;
 using System.Text.RegularExpressions;
 
-namespace MauiApp1.Repository
+namespace MusicCreator.Repository
 {
     internal class MusigTagRepository : IMusicTagRepository
     {

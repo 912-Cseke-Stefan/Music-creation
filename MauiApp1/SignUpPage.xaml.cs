@@ -15,5 +15,4 @@ public partial class SignUpPage : ContentPage
     {
         await Shell.Current.GoToAsync("Main");
     }
-
 }

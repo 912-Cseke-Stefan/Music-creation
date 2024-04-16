@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 //using Microsoft.Data.SqlClient;
+using Music.MusicDomain;
 
 namespace MauiApp1.Repository
 {
-    public class MusigTagRepository : IMusicTagRepository
+    internal class MusigTagRepository : IMusicTagRepository
     {
         //private SqlConnection conn;
         private List<MusicTag> tags;
@@ -33,7 +34,7 @@ namespace MauiApp1.Repository
         public MusicTag? search(int id)
         {
             return (from tag in tags
-                   where tag.id == id
+                   where tag.getId() == id
                    select tag).FirstOrDefault();
         }
 

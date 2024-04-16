@@ -2,11 +2,17 @@ namespace MusicCreator;
 
 public partial class MainPageApp : ContentPage
 {
-	public MainPageApp()
+    List<string> items = [];
+    public MainPageApp()
 	{
 		InitializeComponent();
+        tracksListView.ItemsSource = items;
+    }
 
-        List<string> items = ["Track1", "Track2", "Track3", "Track4", "Track5"];
+    public MainPageApp(string track)
+    {
+        InitializeComponent();
+        items.Add(track);
         tracksListView.ItemsSource = items;
     }
 
@@ -29,5 +35,10 @@ public partial class MainPageApp : ContentPage
     {
 
     }
+    private async void GoToSearchTracks(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Search");
+    }
 
+    
 }

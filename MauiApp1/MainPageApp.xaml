@@ -8,13 +8,18 @@
     <VerticalStackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Button Text="Drums"
-                   Margin="10"/>
+                    Margin="10"
+                    Clicked="GoToSearchTracks"/>
             <Button Text="Music" 
-                   Margin="10"/>
+                   Margin="10"
+                    Clicked="GoToSearchTracks"
+                    />
             <Button Text="FX" 
-                   Margin="10"/>
+                   Margin="10"
+                    Clicked="GoToSearchTracks"/>
             <Button Text="Mic" 
-                   Margin="10"/>
+                   Margin="10"
+                    Clicked="GoToSearchTracks"/>
         </StackLayout>
 
 

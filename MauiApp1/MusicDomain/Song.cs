@@ -4,8 +4,8 @@
     {
         private string artist;
 
-        public Song(int id, string title, string genre, int type, MusicTag tag, byte[] audioData, string artist)
-            : base(id, title, genre, type, tag, audioData)
+        public Song(int id, string title, int type, byte[] audioData, string artist)
+            : base(id, title, type, audioData)
         {
             this.artist = artist;
         }

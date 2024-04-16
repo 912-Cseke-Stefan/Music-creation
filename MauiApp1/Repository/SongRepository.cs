@@ -9,7 +9,15 @@ namespace MauiApp1.Repository
 {
     internal class SongRepository : ISongRepository
     {
-        private List<Song> songs = [Song("")];
+        List<Song> songs = new List<Song>
+        {
+            new Song(1, "Bohemian Rhapsody", 1, [], "Queen"),
+            new Song(2, "Shape of You", 1, [], "Ed Sheeran"),
+            new Song(3, "Rolling in the Deep", 1, [], "Adele"),
+            new Song(4, "Hotel California", 1, [], "Eagles"),
+            new Song(5, "Stairway to Heaven", 1, [], "Led Zeppelin")
+        };
+
 
         public SongRepository()
         {

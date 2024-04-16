@@ -12,6 +12,6 @@ namespace MauiApp1.Repository
         void add(Track elem);
         void delete(Track elem);
         Track? search(int id);
-        Track[] getAll();
+        List<Track> getAll();
     }
 }

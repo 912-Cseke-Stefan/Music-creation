@@ -9,11 +9,22 @@ namespace MauiApp1.Repository
 {
     internal class TrackRepository : ITrackRepository
     {
-        private List<Track> tracks;
+        List<Track> tracks = new List<Track>();
+   
 
         public TrackRepository()
         {
-            tracks = new List<Track>();
+            tracks = new List<Track>(){
+            new Track(1, "Track drum", 1, []),
+            new Track(2, "Track drum", 1, []),
+            new Track(3, "Track music", 2, []),
+            new Track(4, "Track music", 2, []),
+            new Track(5, "Track fx", 3, []),
+            new Track(6, "Track fx", 3, []),
+            new Track(7, "Track voice", 4, []),
+            new Track(8, "Track voice", 4, []),
+
+            }; 
         }
 
         public void add(Track elem)
@@ -35,10 +46,10 @@ namespace MauiApp1.Repository
                     select track).FirstOrDefault();
         }
 
-        public Track[] getAll()
+        public List<Track> getAll()
         {
             return (from track in tracks
-                    select track).ToArray();
+                                       select track).ToList();
         }
     }
 }

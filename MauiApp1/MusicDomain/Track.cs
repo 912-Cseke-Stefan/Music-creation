@@ -6,24 +6,21 @@ namespace Music.MusicDomain
     {
         private int id;
         private string title;
-        private string genre;
         private int type;
-        private MusicTag tag;
         private long timestamp = 0;
         private byte[] audioData;
         private WaveOutEvent waveOut;
         private bool playing = false;
 
-        public Track(int id, string title, string genre, int type, MusicTag tag, byte[] audioData)
+        public Track(int id, string title, int type,byte[] audioData)
         {
             this.id = id;
             this.title = title;
-            this.genre = genre;
             this.type = type;
-            this.tag = tag;
             this.audioData = audioData;
             waveOut = new WaveOutEvent();
         }
+
         public int getId()
         {
             return id;
@@ -34,19 +31,9 @@ namespace Music.MusicDomain
             return title;
         }
 
-        public string getGenre()
-        {
-            return genre;
-        }
-
         public int getType()
         {
             return type;
-        }
-
-        public MusicTag getTag()
-        {
-            return tag;
         }
 
         public void Play()

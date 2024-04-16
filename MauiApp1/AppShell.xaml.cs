@@ -13,6 +13,7 @@ namespace MusicCreator
             Routing.RegisterRoute("SignUp", typeof(SignUpPage));
             Routing.RegisterRoute("Save", typeof(SaveConfirmationPage));
             Routing.RegisterRoute("Search", typeof(SearchPage));
+            Routing.RegisterRoute("ForgotPassword", typeof(ForgotPassword));
         }
     }
 }

@@ -7,7 +7,6 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using Music.MusicDomain;
 using System.Text.RegularExpressions;
-using AndroidX.Emoji2.Text.FlatBuffer;
 
 namespace MauiApp1.Repository
 {
@@ -98,11 +97,11 @@ namespace MauiApp1.Repository
             return generateMusicTagFromRowObject(elem); 
         }
 
-        public MusicTag[] getAll()
+        public List<MusicTag> getAll()
         {
             var elems = from DataRow row in table.Rows
                         select generateMusicTagFromRowObject(row);
-            return elems.ToArray();
+            return elems.ToList();
         }
     }
 }

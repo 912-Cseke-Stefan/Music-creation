@@ -12,10 +12,8 @@ BEGIN
     CREATE TABLE TRACK (
 		track_id INT IDENTITY(1,1),
 		title VARCHAR(30) NOT NULL,
-		genre VARCHAR(30),
 		track_type INT,
-		tag Varchar(20),
-		audio VARCHAR(MAX) NOT NULL,
+		audio VARBINARY(MAX) NOT NULL,
 		PRIMARY KEY(track_id),
 		UNIQUE(title),
 	);
@@ -27,9 +25,7 @@ BEGIN
 		song_id INT IDENTITY(1,1),
 		title VARCHAR(30) NOT NULL,
 		artist VARCHAR(30) NOT NULL,
-		genre VARCHAR(30),
-		tag Varchar(20),
-		audio VARCHAR(MAX) NOT NULL,
+		audio VARBINARY(MAX) NOT NULL,
 		PRIMARY KEY(song_id),
 		UNIQUE(title),
 	);

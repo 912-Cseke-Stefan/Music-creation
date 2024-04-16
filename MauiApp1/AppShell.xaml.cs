@@ -9,6 +9,7 @@
             Routing.RegisterRoute("Main", typeof(MainPageApp));
             Routing.RegisterRoute("LogIn", typeof(LogInPage));
             Routing.RegisterRoute("SignUp", typeof(SignUpPage));
+            Routing.RegisterRoute("Drums", typeof(DrumsPage));
         }
     }
 }

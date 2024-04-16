@@ -64,6 +64,22 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="NAudio" Version="2.2.1" />
+
+	  <Compile Remove="NewPage1.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="NewPage1.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Raw\Alesis-Fusion-Acoustic-Bass-C2.wav" />
+	  <None Remove="Resources\Raw\Bass-Drum-1.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Plugin.Maui.Audio" Version="2.1.0" />
+		<PackageReference Include="Plugin.MauiAudio" Version="1.2.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -76,6 +92,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="DrumsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MainPageApp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -16,7 +16,7 @@ namespace MauiApp1.Repository
         private string getConnectionString()
         {
             return "Data Source=DESKTOP-A6LKOMJ\\SQLEXPRESS;" +
-                "Initial Catalog=CargoShipGlobal;Integrated Security=true;";
+                "Integrated Security=true;";
         }
 
         public MusigTagRepository() 

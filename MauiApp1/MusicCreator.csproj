@@ -66,7 +66,10 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Raw\Alesis-Fusion-Acoustic-Bass-C2.wav" />
+	  <None Remove="Resources\Raw\Bamboo.wav" />
 	  <None Remove="Resources\Raw\Bass-Drum-1.wav" />
+	  <None Remove="Resources\Raw\Bottle.wav" />
+	  <None Remove="Resources\Raw\Cuica-1.wav" />
 	</ItemGroup>
 
 	<ItemGroup>

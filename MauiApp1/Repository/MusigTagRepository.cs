@@ -22,7 +22,15 @@ namespace MauiApp1.Repository
 
         public MusigTagRepository() 
         {
-            //conn = new SqlConnection(getConnectionString());
+            conn = new SqlConnection(getConnectionString());
+            FileInfo fileInfo = new FileInfo("dbcreate.sql");
+            string script = fileInfo.OpenText().ReadToEnd();
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = script;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+
             tags = new List<MusicTag>();
         }
 

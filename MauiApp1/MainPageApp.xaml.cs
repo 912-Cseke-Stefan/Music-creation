@@ -2,10 +2,13 @@ namespace MusicCreator;
 
 public partial class MainPageApp : ContentPage
 {
-    List<string> items = [];
+    List<string> items = ["Track 1"];
     public MainPageApp()
 	{
 		InitializeComponent();
+        //List<string> items = [];
+        items = new List<string>();
+
         tracksListView.ItemsSource = items;
     }
 
@@ -39,6 +42,11 @@ public partial class MainPageApp : ContentPage
     {
         await Shell.Current.GoToAsync("Search");
     }
-
     
+    private async void GoFromMainToSavePage(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Save");
+    }
+
+
 }

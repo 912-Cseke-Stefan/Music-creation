@@ -95,7 +95,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="DrumsPage.xaml">
+	  <MauiXaml Update="ForgotPassword.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="MainPageApp.xaml">

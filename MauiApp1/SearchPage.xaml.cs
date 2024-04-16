@@ -1,23 +1,21 @@
+using MauiApp1.Repository;
+using Music.MusicDomain;
 using MusicCreator;
 
 namespace MauiApp1;
 
 public partial class SearchPage : ContentPage
 {
-    private List<string> tracksData = new List<string>()
-    {
-      "Track 1 - My life",
-      "Track 2 - My world",
-      "Track 3 - hello darkness my old friend",
-      "Track 4 - Hello (adele)",
-      "Track 5 - HeLlo there",
-      // Add more sentences as needed
-    };
+
+    TrackRepository trackRepository = new TrackRepository();
+    List<Track> tracksData;
+
 
     private List<string> list_of_tracks = new List<string>();
 
     public SearchPage()
     {
+        tracksData = trackRepository.getAll();
         InitializeComponent();
         SearchBar.SearchButtonPressed += OnSearchButtonPressed;
     }
@@ -27,11 +25,12 @@ public partial class SearchPage : ContentPage
     {
         ButtonsLayout.Children.Clear(); // Clear existing buttons
 
-        foreach (string track in tracksData)
+        foreach (Track track in tracksData)
         {
-            if (track.ToLower().Contains(searchQuery.ToLower()))
+            string title = track.getTitle();
+            if (title.ToLower().Contains(searchQuery.ToLower()))
             {
-                var button = new Button { Text = track };
+                var button = new Button { Text = title };
                 button.Clicked += Button_Clicked; // Add event handler for button click
                 ButtonsLayout.Children.Add(button);
             }

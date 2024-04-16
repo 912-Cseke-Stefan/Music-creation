@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Music.MusicDomain;
 
 namespace MauiApp1.Repository
 {
-    public class SongRepository : ISongRepository
+    internal class SongRepository : ISongRepository
     {
         private List<Song> songs;
 
@@ -30,7 +31,7 @@ namespace MauiApp1.Repository
         public Song? search(int id)
         {
             return (from song in songs
-                    where song.id == id
+                    where song.getId() == id
                     select song).FirstOrDefault();
         }
 

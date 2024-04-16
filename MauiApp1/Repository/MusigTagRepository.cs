@@ -34,7 +34,7 @@ namespace MauiApp1.Repository
         public MusicTag? search(int id)
         {
             return (from tag in tags
-                   where tag.id == id
+                   where tag.getId() == id
                    select tag).FirstOrDefault();
         }
 

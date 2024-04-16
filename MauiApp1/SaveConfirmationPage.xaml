@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SaveConfirmationPage"
+             Title="SaveConfirmationPage">
+    
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="20">
+                <Label Text="Are you sure you want to save the changes?" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Yes" Clicked="OnYesClicked" />
+                    <Button Text="No" Clicked="OnNoClicked" />
+                </StackLayout>
+            </StackLayout>
+
+</ContentPage>

@@ -16,8 +16,9 @@ namespace MauiApp1.Repository
         private SqlConnection conn;
         private SqlDataAdapter adapter;
         private DataSet dataset;
-        private DataTable table;
+        private DataTable? table;
         private string query;
+        private SqlCommandBuilder cmdBuild;
 
         private string getConnectionString()
         {
@@ -69,12 +70,16 @@ namespace MauiApp1.Repository
             dataset = new DataSet();
             adapter.Fill(dataset, "MusicTag");
             table = dataset.Tables["MusicTag"]; // this should be a shallow copy
+
+            // building commands for the adapter
+            cmdBuild = new SqlCommandBuilder(adapter);
+            adapter.InsertCommand = cmdBuild.GetInsertCommand();
         }
 
         public void add(MusicTag elem)
         {
             DataRow row = table.NewRow();
-            row["musictag_id"] = elem.getId();
+            //row["musictag_id"] = elem.getId();
             row["tag"] = elem.getTitle();
             table.Rows.Add(row);
             adapter.Update(dataset);

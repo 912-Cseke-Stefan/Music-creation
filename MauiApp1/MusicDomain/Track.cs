@@ -2,26 +2,23 @@
 
 namespace Music.MusicDomain
 {
-    internal class Track
+    public class Track
     {
         private int id;
         private string title;
-        private string genre;
-        private int type;
-        private MusicTag tag;
+        private int type; // 1 - drums, 2 - instrument, 3 - fx, 4 - voice
         private long timestamp = 0;
-        private byte[] audioData;
+        private byte[] songData;
         private WaveOutEvent waveOut;
+        private WaveStream waveStream;
         private bool playing = false;
 
-        public Track(int id, string title, string genre, int type, MusicTag tag, byte[] audioData)
+        public Track(int id, string title, int type, byte[] songData)
         {
             this.id = id;
             this.title = title;
-            this.genre = genre;
             this.type = type;
-            this.tag = tag;
-            this.audioData = audioData;
+            this.songData = songData;
             waveOut = new WaveOutEvent();
         }
         public int getId()
@@ -29,14 +26,14 @@ namespace Music.MusicDomain
             return id;
         }
 
+        public byte[] getSongData()
+        {
+            return songData;
+        }
+
         public string getTitle()
         {
             return title;
-        }
-
-        public string getGenre()
-        {
-            return genre;
         }
 
         public int getType()
@@ -44,17 +41,12 @@ namespace Music.MusicDomain
             return type;
         }
 
-        public MusicTag getTag()
-        {
-            return tag;
-        }
-
         public void Play()
         {
             if (!playing)
             {
                 //read the wav data from the byte array
-                WaveStream waveStream = new WaveFileReader(new MemoryStream(audioData));
+                waveStream = new WaveFileReader(new MemoryStream(songData));
                 //WaveStream waveStream = new Mp3FileReader(new MemoryStream(audioData));
                 waveOut.Dispose();
                 waveOut.Init(waveStream);
@@ -77,17 +69,21 @@ namespace Music.MusicDomain
         {
             if (playing)
             {
-                waveOut.Stop();
+
                 playing = false;
                 timestamp = 0;
+                waveOut.Dispose();
+                waveStream.Dispose();
+
             }
+
         }
 
         public void Resume()
         {
             if (!playing)
             {
-                WaveStream waveStream = new WaveFileReader(new MemoryStream(audioData));
+                WaveStream waveStream = new WaveFileReader(new MemoryStream(songData));
                 //WaveStream waveStream = new Mp3FileReader(new MemoryStream(audioData));
                 waveStream.Seek(timestamp, SeekOrigin.Begin);
                 waveOut.Dispose();
@@ -103,4 +99,3 @@ namespace Music.MusicDomain
         }
     }
 }
-

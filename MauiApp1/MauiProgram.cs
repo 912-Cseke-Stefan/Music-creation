@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 
 namespace MusicCreator
 {
@@ -17,6 +18,8 @@ namespace MusicCreator
 
 #if DEBUG
     		builder.Logging.AddDebug();
+            builder.Services.AddSingleton(AudioManager.Current);
+            builder.Services.AddTransient<DrumsPage>();
 #endif
 
             return builder.Build();

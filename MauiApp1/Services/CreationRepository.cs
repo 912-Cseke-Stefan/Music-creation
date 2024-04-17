@@ -97,10 +97,7 @@ namespace MusicCreator.Services
             creation.Stop();
         }
 
-        public void pauseCreation()
-        {
-            creation.Pause();
-        }
+
 
         public Song saveCreation(string title)
         {

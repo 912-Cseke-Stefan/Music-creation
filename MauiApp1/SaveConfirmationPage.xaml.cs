@@ -1,9 +1,11 @@
 using MusicCreator;
+using MusicCreator.Services;
 
 namespace MusicCreator;
 
 public partial class SaveConfirmationPage : ContentPage
 {
+    Service service = Service.GetService();
     public SaveConfirmationPage()
     {
         InitializeComponent();
@@ -11,8 +13,7 @@ public partial class SaveConfirmationPage : ContentPage
 
     private void OnYesClicked(object sender, EventArgs e)
     {
-        // Handle save action
-        // 
+        service.SaveCreation("Suntem bosi");
     }
 
     private void OnNoClicked(object sender, EventArgs e)

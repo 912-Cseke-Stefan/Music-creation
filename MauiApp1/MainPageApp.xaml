@@ -84,9 +84,9 @@
             HeightRequest="50"
             />
         <Button
-            Text="Save"
+            Text="Save/Stop"
             Clicked="GoFromMainToSavePage"
-            BackgroundColor="#007AFF"
+            BackgroundColor="Green"
             TextColor="White"
             CornerRadius="30"
             WidthRequest="120"

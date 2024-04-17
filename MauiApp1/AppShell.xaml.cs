@@ -1,4 +1,6 @@
-﻿namespace MusicCreator
+﻿using MusicCreator;
+
+namespace MusicCreator
 {
     public partial class AppShell : Shell
     {
@@ -9,6 +11,9 @@
             Routing.RegisterRoute("Main", typeof(MainPageApp));
             Routing.RegisterRoute("LogIn", typeof(LogInPage));
             Routing.RegisterRoute("SignUp", typeof(SignUpPage));
+            Routing.RegisterRoute("Save", typeof(SaveConfirmationPage));
+            Routing.RegisterRoute("Search", typeof(SearchPage));
+            Routing.RegisterRoute("ForgotPassword", typeof(ForgotPassword));
         }
     }
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "sql": {
+      "commandName": "Project",
+      "workingDirectory": "E:\\FinalProject\\Music-creation\\populateDB"
+    }
+  }
+}

@@ -4,17 +4,41 @@
              x:Class="MusicCreator.MainPageApp"
              Title="NewPage1"
              Shell.NavBarIsVisible="False">
-    
-    <VerticalStackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+    <StackLayout Padding="20" Spacing="20">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+            
             <Button Text="Drums"
-                   Margin="10"/>
-            <Button Text="Music" 
-                   Margin="10"/>
-            <Button Text="FX" 
-                   Margin="10"/>
-            <Button Text="Mic" 
-                   Margin="10"/>
+                    Clicked="GoToSearchTracks"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    WidthRequest="80"
+                    HeightRequest="40"/>
+            
+            <Button Text="Music"
+                    Clicked="GoToSearchTracks"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    WidthRequest="80"
+                    HeightRequest="40"/>
+
+            <Button Text="FX"
+                    Clicked="GoToSearchTracks"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    WidthRequest="80"
+                    HeightRequest="40"/>
+
+            <Button Text="Mic"
+                    Clicked="GoToSearchTracks"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    WidthRequest="80"
+                    HeightRequest="40"/>
         </StackLayout>
 
 
@@ -25,37 +49,49 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding}" VerticalOptions="Center" />
-                                <Button Text="Delete" Clicked="OnDeleteClicked" CommandParameter="{Binding .}" />
+                                <Button Text="Delete" 
+                                        BackgroundColor="#FF3B30"
+                                        TextColor="White"
+                                        Clicked="OnDeleteClicked" 
+                                        CommandParameter="{Binding .}" 
+                                        
+                                        />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button
-                Text="MASTER Track"
+            <Button Text="MASTER Track"
                 Clicked="GoToListenTrack"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
                 WidthRequest="150"
-                Margin="10"
-                />
+                HeightRequest="50"/>
         </StackLayout>
-        <Image
-            Source="dotnet_bot.png"
-            HeightRequest="185"
-            Aspect="AspectFit"
-            SemanticProperties.Description="dot net bot in a race car number eight" />
-
+        <Image Source="https://png.pngtree.com/png-clipart/20230917/original/pngtree-audio-wave-icon-in-pink-and-orange-vector-png-image_12273318.png"
+               HeightRequest="250"
+               Aspect="AspectFit"
+               HorizontalOptions="CenterAndExpand"
+               Margin="0,20,0,20"/>
         <Button
             Text="Play"
-            Clicked="GoFromMainToLogInPage"
-            WidthRequest="60"
-            Margin="10"
+            Clicked="GoFromMainToSavePage"
+            BackgroundColor="#007AFF"
+            TextColor="White"
+            CornerRadius="30"
+            WidthRequest="120"
+            HeightRequest="50"
             />
         
          <!--Butonul asta e doar ca sa pot eu merge inapoi-->
-        <Button
-            Text="Back"
-            Clicked="GoFromMainToLogInPage"
-            />
+        <Button Text="Back"
+                Clicked="GoFromMainToLogInPage"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
+                WidthRequest="80"
+                HeightRequest="40"/>
 
-    </VerticalStackLayout>
+    </StackLayout>
 </ContentPage>

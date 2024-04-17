@@ -1,12 +1,25 @@
+using Music.MusicDomain;
+using MusicCreator.Services;
+
 namespace MusicCreator;
 
 public partial class MainPageApp : ContentPage
 {
-	public MainPageApp()
+    Service service = Service.GetService();
+   
+    public MainPageApp()
 	{
 		InitializeComponent();
+    }
 
-        List<string> items = ["Track1", "Track2", "Track3", "Track4", "Track5"];
+    public MainPageApp(string track)
+    {
+        InitializeComponent();
+        List<Track> auxList = service.GetCreationTracks();
+        List<string> items = (from t in auxList
+                             select t.getTitle()).ToList();
+        //service.AddTrack(track);
+        items.Add(track);
         tracksListView.ItemsSource = items;
     }
 
@@ -29,5 +42,15 @@ public partial class MainPageApp : ContentPage
     {
 
     }
+    private async void GoToSearchTracks(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Search");
+    }
+    
+    private async void GoFromMainToSavePage(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("Save");
+    }
+
 
 }

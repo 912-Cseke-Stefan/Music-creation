@@ -9,7 +9,7 @@
                 <SearchBar x:Name="SearchBar" Placeholder="Search for tracks" SearchButtonPressed="OnSearchButtonPressed" />
 
                 <StackLayout>
-                    <ListView x:Name="TracksListView"  >
+                    <ListView x:Name="TracksListView" ItemTapped="OnTrackTapped">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -19,6 +19,7 @@
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+
                     </ListView>
                 </StackLayout>
 

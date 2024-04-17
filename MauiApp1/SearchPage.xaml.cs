@@ -17,12 +17,51 @@ public partial class SearchPage : ContentPage
         InitializeComponent();
 
         service = Service.GetService();
-        tracksData = service.GetTracks();
 
+        string queryCategory = Shell.Current.CurrentState.Location.Query;
+      
+        string[] parameter = queryCategory.TrimStart('?').Split('&');
+        string[] parts = parameter[0].Split('=');
+        string category = parts[1];
+
+        int categoryInt;
+
+        if (category == "drum")
+        {
+            categoryInt = 1;
+        }
+        else if(category == "instrument")
+        {
+            categoryInt = 2;
+        }
+        else if(category == "fx")
+        {
+            categoryInt = 3;
+        }
+        else if(category == "voice")
+        {
+            categoryInt = 4;
+        }
+        else
+        {
+            categoryInt = 0;
+        }
+
+        tracksData = service.GetTracksByType(categoryInt);
         TracksListView.ItemsSource = tracksData;
-    
+        
 
         //SearchBar.SearchButtonPressed += OnSearchButtonPressed;
+    }
+
+    
+
+    public void OnTrackTapped(object sender, ItemTappedEventArgs e)
+    {
+        Track track = e.Item as Track;
+        service.AddTrack(track);
+       
+        Shell.Current.GoToAsync("Main");
     }
 
     // Method to create dynamic buttons for sentences containing the search query

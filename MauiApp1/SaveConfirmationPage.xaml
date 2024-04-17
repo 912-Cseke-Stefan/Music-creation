@@ -12,23 +12,29 @@
                 
                     Margin="0,20,0,10"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-      
-                    <Button
+                <Entry x:Name="UsernameEntry" 
+                        Placeholder="Username" 
+                        BackgroundColor="#FFFFFF" 
+                        PlaceholderColor="#dfdfdd" 
+                        TextColor="#000000" />
+
+                <Button
                         Text="Yes"
                         Clicked="OnYesClicked"
                         BackgroundColor="#007AFF"
                         TextColor="White"
                         CornerRadius="10"
                         Margin="0,20,20,0" />
-                    
-                   
-                    <Button
+
+
+                <Button
                         Text="No"
                         Clicked="OnNoClicked"
                         BackgroundColor="#007AFF"
                         TextColor="White"
                         CornerRadius="10"
                         Margin="0,20,0,0" />
+                    
         </StackLayout>
             </StackLayout>
 

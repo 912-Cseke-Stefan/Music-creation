@@ -1,20 +1,23 @@
+using Music.MusicDomain;
+using MusicCreator.Services;
+
 namespace MusicCreator;
 
 public partial class MainPageApp : ContentPage
 {
-    List<string> items = ["Track 1"];
+    Service service = Service.GetService();
+   
     public MainPageApp()
 	{
 		InitializeComponent();
-        //List<string> items = [];
-        items = new List<string>();
-
-        tracksListView.ItemsSource = items;
     }
 
     public MainPageApp(string track)
     {
         InitializeComponent();
+        List<Track> auxList = service.GetCreationTracks();
+        List<string> items = (from t in auxList
+                             select t.getTitle()).ToList();
         items.Add(track);
         tracksListView.ItemsSource = items;
     }

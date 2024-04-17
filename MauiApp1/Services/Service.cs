@@ -10,9 +10,26 @@ namespace MusicCreator.Services
 {
     internal class Service
     {
-        private TrackRepository _trackRepository = new TrackRepository();
-        private CreationRepository _creationRepository = new CreationRepository();
-        private SongRepository _songRepository = new SongRepository();
+        private TrackRepository _trackRepository;
+        private CreationRepository _creationRepository;
+        private SongRepository _songRepository;
+
+        private static Service? _instance = null;
+        public static Service GetService()
+        {
+            if (_instance == null)
+            {
+                _instance = new Service();
+            }
+            return _instance;
+        }
+
+        private Service()
+        {
+             _trackRepository = new TrackRepository();
+             _creationRepository = new CreationRepository();
+             _songRepository = new SongRepository();
+        }
 
         public List<Track> GetTracks()
         {

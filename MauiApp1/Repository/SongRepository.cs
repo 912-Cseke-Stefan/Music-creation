@@ -21,13 +21,13 @@ namespace MusicCreator.Repository
 
         private string getConnectionString()
         {
-            return "Data Source=10.152.0.159,1235;" +
+            return "Data Source=192.168.1.225,1235;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
         private string getConnectionString2()
         {
-            return "Data Source=10.152.0.159,1235;Initial Catalog=MusicDB;" +
+            return "Data Source=192.168.1.225,1235;Initial Catalog=MusicDB;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
@@ -47,7 +47,7 @@ namespace MusicCreator.Repository
             query = "select * from SONG";
 
             // creating database and tables if they do not exist already (from script)
-            conn.Open();
+            /*conn.Open();
             FileInfo fileInfo = new FileInfo("D:\\Facultate\\sem4\\se\\Music-creation\\MauiApp1\\Repository\\dbcreate.sql");
             string script = fileInfo.OpenText().ReadToEnd();
             Regex regex = new Regex("^GO", RegexOptions.IgnoreCase | RegexOptions.Multiline);
@@ -61,6 +61,7 @@ namespace MusicCreator.Repository
                 cmd.ExecuteNonQuery();
             }
             conn.Close();
+            */
 
             // reconnecting to the database with another connection string
             // there might be a cleaner way; I didn't find it, good luck to you

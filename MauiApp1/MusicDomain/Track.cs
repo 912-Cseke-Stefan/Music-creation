@@ -5,7 +5,8 @@ namespace Music.MusicDomain
     internal class Track
     {
         private int id;
-        private string title;
+        public string title { get; }
+      
         private int type; // 1 - drums, 2 - instrument, 3 - fx, 4 - voice
         private long timestamp = 0;
         private byte[] songData;

@@ -1,27 +1,32 @@
 using MusicCreator.Repository;
 using Music.MusicDomain;
 using MusicCreator;
+using MusicCreator.Services;
+using System.Collections.ObjectModel;
 
 namespace MusicCreator;
 
 public partial class SearchPage : ContentPage
 {
 
-    TrackRepository trackRepository = new TrackRepository();
+    Service service;
     List<Track> tracksData;
-
-
-    private List<string> list_of_tracks = new List<string>();
 
     public SearchPage()
     {
-        tracksData = trackRepository.getAll();
         InitializeComponent();
-        SearchBar.SearchButtonPressed += OnSearchButtonPressed;
+
+        service = Service.GetService();
+        tracksData = service.GetTracks();
+
+        TracksListView.ItemsSource = tracksData;
+    
+
+        //SearchBar.SearchButtonPressed += OnSearchButtonPressed;
     }
 
     // Method to create dynamic buttons for sentences containing the search query
-    private void CreateButtons(string searchQuery)
+    /*private void CreateButtons(string searchQuery)
     {
         ButtonsLayout.Children.Clear(); // Clear existing buttons
 
@@ -33,17 +38,18 @@ public partial class SearchPage : ContentPage
                 var button = new Button { Text = title };
                 button.Clicked += Button_Clicked; // Add event handler for button click
                 ButtonsLayout.Children.Add(button);
+  
             }
         }
     }
-
+    */
     // Event handler for the search bar's search button pressed event
     private void OnSearchButtonPressed(object sender, EventArgs e)
     {
         string searchQuery = SearchBar.Text;
         if (!string.IsNullOrWhiteSpace(searchQuery))
         {
-            CreateButtons(searchQuery);
+            //CreateButtons(searchQuery);
         }
         else
         {
@@ -51,7 +57,7 @@ public partial class SearchPage : ContentPage
             DisplayAlert("Empty Search", "Please enter a search query", "OK");
         }
     }
-
+    /*
     // Event handler for dynamic button click
     private void Button_Clicked(object sender, EventArgs e)
     {
@@ -63,4 +69,6 @@ public partial class SearchPage : ContentPage
         //SEND BACK TO MAIN PAGE THE LIST OF TRACK
         Shell.Current.Navigation.PushAsync(new MainPageApp(track));
         }
+    */
+
 }

@@ -8,6 +8,20 @@
             <StackLayout Padding="10">
                 <SearchBar x:Name="SearchBar" Placeholder="Search for tracks" SearchButtonPressed="OnSearchButtonPressed" />
 
+                <StackLayout>
+                    <ListView x:Name="TracksListView"  >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="10">
+                                        <Label Text="{Binding title}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
                 <StackLayout x:Name="ButtonsLayout">
                 </StackLayout>
 

@@ -1,8 +1,9 @@
-﻿namespace MusicCreator
+﻿using MusicCreator.Services;
+
+namespace MusicCreator
 {
     public partial class LogInPage : ContentPage
     {
-
         public LogInPage()
         {
             InitializeComponent();

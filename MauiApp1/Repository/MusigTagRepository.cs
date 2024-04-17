@@ -8,7 +8,7 @@ using Microsoft.Data.SqlClient;
 using Music.MusicDomain;
 using System.Text.RegularExpressions;
 
-namespace MauiApp1.Repository
+namespace MusicCreator.Repository
 {
     internal class MusigTagRepository : IMusicTagRepository
     {
@@ -81,7 +81,7 @@ namespace MauiApp1.Repository
             //row["musictag_id"] = elem.getId();
             row["tag"] = elem.getTitle();
             table.Rows.Add(row);
-            adapter.Update(dataset);
+            adapter.Update(dataset, "MusicTag");
         }
 
         public MusicTag? search(int id)

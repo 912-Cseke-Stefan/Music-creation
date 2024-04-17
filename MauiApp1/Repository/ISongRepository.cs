@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Music.MusicDomain;
 
-namespace MauiApp1.Repository
+namespace MusicCreator.Repository
 {
     internal interface ISongRepository
     {

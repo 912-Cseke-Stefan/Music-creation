@@ -2,7 +2,7 @@
 
 namespace Music.MusicDomain
 {
-    public class Track
+    internal class Track
     {
         private int id;
         private string title;
@@ -21,6 +21,7 @@ namespace Music.MusicDomain
             this.songData = songData;
             waveOut = new WaveOutEvent();
         }
+
         public int getId()
         {
             return id;

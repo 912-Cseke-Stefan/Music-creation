@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MauiApp1.Repository;
+using MusicCreator.Repository;
 using Music.MusicDomain;
 
-namespace MauiApp1.Services
+namespace MusicCreator.Services
 {
     internal class Service
     {

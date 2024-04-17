@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Music.MusicDomain;
 using NAudio.Wave;
 
-namespace MauiApp1.Services
+namespace MusicCreator.Services
 {
     internal class CreationRepository : ICreationRepository
     {
@@ -17,7 +17,7 @@ namespace MauiApp1.Services
 
         public CreationRepository()
         {
-            WaveMixerStream32 mixer = new WaveMixerStream32();
+            mixer = new WaveMixerStream32();
             creation = new Track(0507, "creation", 1704, []);
             mixer.Dispose();
             // this is to empty the creation file
@@ -48,7 +48,7 @@ namespace MauiApp1.Services
 
         private void generateCreation()
         {
-            WaveMixerStream32 mixer = new WaveMixerStream32();
+            mixer = new WaveMixerStream32();
             foreach (Track track in tracks)
             {
                 WaveStream audio = new WaveFileReader(new MemoryStream(track.getSongData()));

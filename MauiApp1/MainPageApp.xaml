@@ -61,12 +61,11 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="MASTER Track"
-                Clicked="GoToListenTrack"
+            <Label Text="MASTER YOUR TRACK"
                 BackgroundColor="#007AFF"
                 TextColor="White"
-                CornerRadius="10"
-                WidthRequest="150"
+                
+                WidthRequest="50"
                 HeightRequest="50"/>
         </StackLayout>
         <Image Source="https://png.pngtree.com/png-clipart/20230917/original/pngtree-audio-wave-icon-in-pink-and-orange-vector-png-image_12273318.png"
@@ -76,15 +75,24 @@
                Margin="0,20,0,20"/>
         <Button
             Text="Play"
-            Clicked="GoFromMainToSavePage"
             BackgroundColor="#007AFF"
             TextColor="White"
             CornerRadius="30"
             WidthRequest="120"
             HeightRequest="50"
             />
-        
-         <!--Butonul asta e doar ca sa pot eu merge inapoi-->
+
+        <Button
+            Text="Save"
+            Clicked="GoFromMainToSavePage"
+            BackgroundColor="#FF3B30"
+            TextColor="White"
+            CornerRadius="30"
+            WidthRequest="120"
+            HeightRequest="50"
+            />
+
+        <!--Butonul asta e doar ca sa pot eu merge inapoi-->
         <Button Text="Back"
                 Clicked="GoFromMainToLogInPage"
                 BackgroundColor="#007AFF"

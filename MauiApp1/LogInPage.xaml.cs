@@ -7,6 +7,7 @@ namespace MusicCreator
         public LogInPage()
         {
             InitializeComponent();
+            Service.GetService();
         }
 
         private async void OnLoginClicked(object sender, EventArgs e)

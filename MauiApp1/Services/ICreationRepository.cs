@@ -15,7 +15,6 @@ namespace MusicCreator.Services
         List<Track> GetTracks();
         void playCreation();
         void stopCreation();
-        void pauseCreation();
         Song saveCreation(string title);
     }
 }

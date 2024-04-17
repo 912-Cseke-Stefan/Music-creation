@@ -18,6 +18,7 @@ public partial class MainPageApp : ContentPage
         List<Track> auxList = service.GetCreationTracks();
         List<string> items = (from t in auxList
                              select t.getTitle()).ToList();
+        //service.AddTrack(track);
         items.Add(track);
         tracksListView.ItemsSource = items;
     }

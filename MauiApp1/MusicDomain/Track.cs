@@ -51,13 +51,11 @@ namespace Music.MusicDomain
                 waveOut.Dispose();
                 waveOut.Init(waveStream);
                 waveOut.Play();
-                playing = true;
             }
         }
 
         public void Stop()
         {
-            playing = false;
             timestamp = 0;
             waveOut.Dispose();
             waveStream.Dispose();

@@ -7,7 +7,7 @@ GO
     USE [MusicDB]
 GO
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='TRACK')
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='TRACK' and xtype='U')
 BEGIN
     CREATE TABLE TRACK (
 		track_id INT IDENTITY(1,1),
@@ -19,7 +19,7 @@ BEGIN
 	);
 END
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='SONG')
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='SONG' and xtype='U')
 BEGIN
     CREATE TABLE SONG (
 		song_id INT IDENTITY(1,1),
@@ -31,7 +31,7 @@ BEGIN
 	);
 END
 
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='MUSICTAG')
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='MUSICTAG' and xtype='U')
 BEGIN
     CREATE TABLE MUSICTAG (
 		musictag_id INT IDENTITY(1,1),

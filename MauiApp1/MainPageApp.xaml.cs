@@ -10,16 +10,10 @@ public partial class MainPageApp : ContentPage
     public MainPageApp()
 	{
 		InitializeComponent();
-    }
-
-    public MainPageApp(string track)
-    {
-        InitializeComponent();
         List<Track> auxList = service.GetCreationTracks();
         List<string> items = (from t in auxList
                              select t.getTitle()).ToList();
-        //service.AddTrack(track);
-        items.Add(track);
+
         tracksListView.ItemsSource = items;
     }
 
@@ -28,6 +22,7 @@ public partial class MainPageApp : ContentPage
         if (sender is Button { CommandParameter: string item } && tracksListView.ItemsSource is List<string> items)
         {
             items.Remove(item);
+            
             tracksListView.ItemsSource = null;
             tracksListView.ItemsSource = items;
         }
@@ -52,5 +47,9 @@ public partial class MainPageApp : ContentPage
         await Shell.Current.GoToAsync("Save");
     }
 
+    private void PlayCreation(object sender, EventArgs e)
+    {
+        service.PlayCreation();
+    }
 
 }

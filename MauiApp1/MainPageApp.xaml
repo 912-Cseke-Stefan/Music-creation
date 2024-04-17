@@ -76,6 +76,15 @@
                Margin="0,20,0,20"/>
         <Button
             Text="Play"
+            Clicked="PlayCreation"
+            BackgroundColor="#007AFF"
+            TextColor="White"
+            CornerRadius="30"
+            WidthRequest="120"
+            HeightRequest="50"
+            />
+        <Button
+            Text="Save"
             Clicked="GoFromMainToSavePage"
             BackgroundColor="#007AFF"
             TextColor="White"

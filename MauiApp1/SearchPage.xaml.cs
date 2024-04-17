@@ -25,6 +25,14 @@ public partial class SearchPage : ContentPage
         //SearchBar.SearchButtonPressed += OnSearchButtonPressed;
     }
 
+    public void OnTrackTapped(object sender, ItemTappedEventArgs e)
+    {
+        Track track = e.Item as Track;
+        service.AddTrack(track);
+       
+        Shell.Current.GoToAsync("Main");
+    }
+
     // Method to create dynamic buttons for sentences containing the search query
     /*private void CreateButtons(string searchQuery)
     {

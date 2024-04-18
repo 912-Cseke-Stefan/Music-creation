@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using Plugin.Maui.Audio;
 
 namespace Music.MusicDomain
 {
@@ -76,10 +77,12 @@ namespace Music.MusicDomain
         public string title { get; }
 
         private int type; // 1 - drums, 2 - instrument, 3 - fx, 4 - voice
-        private long timestamp = 0;
+        //private long timestamp = 0;
         private byte[] songData;
-        private WaveOutEvent waveOut;
-        private WaveStream waveStream;
+        //private WaveOutEvent waveOut;
+        //private WaveStream waveStream;
+        private IAudioManager audioManager;
+        private IAudioPlayer audioPlayer;
 
         public Track(int id, string title, int type, byte[] songData)
         {
@@ -87,7 +90,8 @@ namespace Music.MusicDomain
             this.title = title;
             this.type = type;
             this.songData = songData;
-            waveOut = new WaveOutEvent();
+            //waveOut = new WaveOutEvent();
+            audioManager = AudioManager.Current;
         }
 
         public int getId()
@@ -116,7 +120,7 @@ namespace Music.MusicDomain
             {
                 return;
             }
-            if (waveOut.PlaybackState == PlaybackState.Stopped )
+            /*if (waveOut.PlaybackState == PlaybackState.Stopped )
             {
                 //read the wav data from the byte array
                 waveStream = new WaveFileReader(new MemoryStream(songData));
@@ -128,29 +132,36 @@ namespace Music.MusicDomain
                 //waveOut.Init(loop);
                 waveOut.Init(waveStream);
                 waveOut.Play();
-            }
+            }*/
+            if (audioPlayer != null)
+                audioPlayer.Stop();
+
+            audioPlayer = audioManager.CreatePlayer(new MemoryStream(songData));
+            audioPlayer.Loop = true;
+            audioPlayer.Play();
         }
 
         public void Stop()
         {
-            timestamp = 0;
-            waveOut.Dispose();
-            if(waveStream != null)
-            {
-                waveStream.Dispose();
-            }
-            
+            //timestamp = 0;
+            //waveOut.Dispose();
+            //if(waveStream != null)
+            //{
+            //    waveStream.Dispose();
+            //}
+            if(audioPlayer != null)
+                audioPlayer.Stop();
 
         }
 
         ~Track()
         {
-            waveOut.Dispose();
+            //waveOut.Dispose();
         }
 
-        public PlaybackState GetPlaybackState()
-        {
-            return waveOut.PlaybackState;
-        }
+        //public PlaybackState GetPlaybackState()
+        //{
+        //    return waveOut.PlaybackState;
+        //}
     }
 }

@@ -89,10 +89,10 @@ namespace MusicCreator.Services
 
         public void playCreation()
         {
-            if (creation.GetPlaybackState() == PlaybackState.Stopped)
+            //if (creation.GetPlaybackState() == PlaybackState.Stopped)
                 creation.Play();
-            else if (creation.GetPlaybackState() == PlaybackState.Playing)
-                creation.Stop();
+            //else if (creation.GetPlaybackState() == PlaybackState.Playing)
+            //    creation.Stop();
 
         }
 

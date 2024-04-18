@@ -59,14 +59,14 @@ public partial class MainPageApp : ContentPage
         {
             playButton.BackgroundColor = Color.FromRgb(255, 0, 0);
             isButtonClicked = true;
+            service.PlayCreation();
         }
         else
         {
             playButton.BackgroundColor = Color.FromRgb(57, 208, 71);
             isButtonClicked = false;
+            service.StopCreation();
         }
-
-        service.PlayCreation();
     }
 
 }

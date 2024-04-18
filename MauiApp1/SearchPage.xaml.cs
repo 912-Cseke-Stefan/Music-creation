@@ -12,6 +12,7 @@ public partial class SearchPage : ContentPage
 
     Service service;
     List<Track> tracksData;
+    int categoryInt;
 
     public SearchPage()
     {
@@ -20,7 +21,7 @@ public partial class SearchPage : ContentPage
         service = Service.GetService();
 
         string category = service.category;
-        int categoryInt;
+        
 
         if (category == "drums")
         {
@@ -101,14 +102,16 @@ public partial class SearchPage : ContentPage
     private void OnSearchButtonPressed(object sender, EventArgs e)
     {
         string searchQuery = SearchBar.Text;
-        if (!string.IsNullOrWhiteSpace(searchQuery))
+        if (string.IsNullOrWhiteSpace(searchQuery))
         {
-            //CreateButtons(searchQuery);
+            
+            TracksListView.ItemsSource = service.GetTracksByType(categoryInt);
         }
         else
         {
-            // Handle empty search query
-            DisplayAlert("Empty Search", "Please enter a search query", "OK");
+            TracksListView.ItemsSource = service.GetTracksByType(categoryInt).
+                FindAll(x => x.getTitle().ToLower().Contains(searchQuery.ToLower()));
+
         }
     }
     /*

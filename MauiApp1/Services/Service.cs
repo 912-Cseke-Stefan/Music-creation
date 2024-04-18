@@ -13,6 +13,9 @@ namespace MusicCreator.Services
         private TrackRepository _trackRepository;
         private CreationRepository _creationRepository;
         private SongRepository _songRepository;
+        public string category { get; set;}
+
+
 
         private static Service? _instance = null;
         public static Service GetService()

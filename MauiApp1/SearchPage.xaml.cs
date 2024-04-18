@@ -3,6 +3,8 @@ using Music.MusicDomain;
 using MusicCreator;
 using MusicCreator.Services;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
+
 
 namespace MusicCreator;
 
@@ -18,19 +20,14 @@ public partial class SearchPage : ContentPage
 
         service = Service.GetService();
 
-        /*string queryCategory = Shell.Current.CurrentState.Location.Query;
-      
-        string[] parameter = queryCategory.TrimStart('?').Split('&');
-        string[] parts = parameter[0].Split('=');
-        string category = parts[1];
-
+        string category = service.category;
         int categoryInt;
 
-        if (category == "drum")
+        if (category == "drums")
         {
             categoryInt = 1;
         }
-        else if(category == "instrument")
+        else if(category == "music")
         {
             categoryInt = 2;
         }
@@ -38,16 +35,16 @@ public partial class SearchPage : ContentPage
         {
             categoryInt = 3;
         }
-        else if(category == "voice")
+        else if(category == "mic")
         {
             categoryInt = 4;
         }
         else
         {
             categoryInt = 0;
-        }*/
+        }
 
-        tracksData = service.GetTracks();
+        tracksData = service.GetTracksByType(categoryInt);
         TracksListView.ItemsSource = tracksData;
         
 

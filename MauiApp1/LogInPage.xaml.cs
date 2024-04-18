@@ -12,6 +12,11 @@ namespace MusicCreator
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(UsernameEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
+            {
+                await DisplayAlert("Error", "Username and password are required!", "OK");
+                return;
+            }
             await Shell.Current.GoToAsync("Main");
         }
 

@@ -8,7 +8,6 @@ using Microsoft.Data.SqlClient;
 using Music.MusicDomain;
 using System.Text.RegularExpressions;
 
-
 namespace MusicCreator.Repository
 {
     internal class TrackRepository : ITrackRepository

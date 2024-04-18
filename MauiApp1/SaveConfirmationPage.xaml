@@ -11,31 +11,34 @@
                     FontSize="24"
                 
                     Margin="0,20,0,10"/>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Entry x:Name="UsernameEntry" 
-                        Placeholder="Username" 
-                        BackgroundColor="#FFFFFF" 
-                        PlaceholderColor="#dfdfdd" 
-                        TextColor="#000000" />
-
-                <Button
-                        Text="Yes"
-                        Clicked="OnYesClicked"
-                        BackgroundColor="#007AFF"
-                        TextColor="White"
-                        CornerRadius="10"
-                        Margin="0,20,20,0" />
+                
+                    <Entry x:Name="SaveTitleEntry" 
+                    Placeholder="Enter title for your creation" 
+                    BackgroundColor="#FFFFFF" 
+                    PlaceholderColor="#dfdfdd" 
+                    TextColor="#000000" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
+        >
 
 
-                <Button
-                        Text="No"
-                        Clicked="OnNoClicked"
-                        BackgroundColor="#007AFF"
-                        TextColor="White"
-                        CornerRadius="10"
-                        Margin="0,20,0,0" />
-                    
+            <Button
+                                Text="Yes"
+                                Clicked="OnYesClicked"
+                                BackgroundColor="#007AFF"
+                                TextColor="White"
+                                CornerRadius="10"
+                                Margin="0,20,20,0" />
+
+
+            <Button
+                                Text="No"
+                                Clicked="OnNoClicked"
+                                BackgroundColor="#007AFF"
+                                TextColor="White"
+                                CornerRadius="10"
+                                Margin="0,20,0,0" />
+
         </StackLayout>
-            </StackLayout>
+    </StackLayout>
 
 </ContentPage>

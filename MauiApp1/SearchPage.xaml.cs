@@ -3,7 +3,7 @@ using Music.MusicDomain;
 using MusicCreator;
 using MusicCreator.Services;
 using System.Collections.ObjectModel;
-using Microsoft.Maui.Controls;
+using NAudio.Wave;
 
 
 namespace MusicCreator;
@@ -51,6 +51,17 @@ public partial class SearchPage : ContentPage
         //SearchBar.SearchButtonPressed += OnSearchButtonPressed;
     }
 
+    
+
+    public void OnTrackTapped(object sender, ItemTappedEventArgs e)
+    {
+        Track track = e.Item as Track;
+        service.AddTrack(track);
+        service.StopAll();
+       
+        Shell.Current.GoToAsync("Main");
+    }
+
     public void OnPlayClicked(object sender, EventArgs e)
     {
 
@@ -63,14 +74,10 @@ public partial class SearchPage : ContentPage
 
     }
 
-
-    public void OnTrackTapped(object sender, ItemTappedEventArgs e)
+    public async void GoFromSearchToMainPage(object sender, EventArgs e)
     {
-        Track track = e.Item as Track;
-        service.AddTrack(track);
         service.StopAll();
-       
-        Shell.Current.GoToAsync("Main");
+        await Shell.Current.GoToAsync("Main");
     }
 
     // Method to create dynamic buttons for sentences containing the search query

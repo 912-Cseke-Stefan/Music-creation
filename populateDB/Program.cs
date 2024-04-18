@@ -22,11 +22,14 @@ if (option == 2)
     List<Track> tracks = TrackCreator.CreateTracks(Environment.CurrentDirectory + "\\iss_loops_wav");
     foreach (Track track in tracks)
     {
+        Console.WriteLine(track.getTitle());
         repo.add(track);
     }
 }
 else if (option != 1)
     Console.WriteLine("You're dumb");
+else
+    Console.WriteLine("No errors");
 
 public class Track
 {
@@ -138,9 +141,7 @@ internal class TrackCreator
             nameElements = name.Split(new char[] { '_' });
             name = nameElements.Aggregate((a, b) => a + " " + b);
             name = char.ToUpper(name[0]) + name.Substring(1);
-            Console.WriteLine(name);
-            
-            Console.WriteLine(name);
+
             int trackType = 0;
             if (fileName.Contains("drums"))
             {
@@ -183,7 +184,7 @@ internal class TrackRepository
     private string getConnectionString2()
     {
         return "Data Source=" + ip + ",1235;Initial Catalog=MusicDB;" +
-            "Integrated Security=true;Encrypt=False";
+            "User Id=user;Password=root;Encrypt=False";
     }
 
     private Track generateTrackFromRowObject(DataRow row)
@@ -226,8 +227,8 @@ internal class TrackRepository
         // filling dataset
         adapter = new SqlDataAdapter(query, conn);
         dataset = new DataSet();
-        adapter.Fill(dataset, "TRACK");
-        table = dataset.Tables["TRACK"]; // this should be a shallow copy
+        adapter.Fill(dataset, "Track");
+        table = dataset.Tables["Track"]; // this should be a shallow copy
 
         // building commands for the adapter
         cmdBuild = new SqlCommandBuilder(adapter);
@@ -242,7 +243,7 @@ internal class TrackRepository
         row["track_type"] = elem.getType();
         row["audio"] = elem.getSongData();
         table.Rows.Add(row);
-        adapter.Update(dataset, "TRACK");
+        adapter.Update(dataset, "Track");
     }
 
     public void delete(Track elem)

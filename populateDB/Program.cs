@@ -141,9 +141,7 @@ internal class TrackCreator
             nameElements = name.Split(new char[] { '_' });
             name = nameElements.Aggregate((a, b) => a + " " + b);
             name = char.ToUpper(name[0]) + name.Substring(1);
-            Console.WriteLine(name);
-            
-            Console.WriteLine(name);
+
             int trackType = 0;
             if (fileName.Contains("drums"))
             {

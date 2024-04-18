@@ -49,6 +49,11 @@ public partial class MainPageApp : ContentPage
     
     private async void GoFromMainToSavePage(object sender, EventArgs e)
     {
+        if(service.GetCreationTracks().Count == 0)
+        {
+            DisplayAlert("Empty creation!", "Please select at least one track!", "OK");
+            return;
+        }
         await Shell.Current.GoToAsync("Save");
     }
 

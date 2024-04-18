@@ -13,12 +13,12 @@
                     Margin="0,20,0,10"/>
                 
                     <Entry x:Name="SaveTitleEntry" 
-                    Placeholder="Enter title" 
+                    Placeholder="Enter title for your creation" 
                     BackgroundColor="#FFFFFF" 
                     PlaceholderColor="#dfdfdd" 
                     TextColor="#000000" />
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
-    >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
+        >
 
 
             <Button

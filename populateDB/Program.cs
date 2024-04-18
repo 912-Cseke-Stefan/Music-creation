@@ -22,11 +22,14 @@ if (option == 2)
     List<Track> tracks = TrackCreator.CreateTracks(Environment.CurrentDirectory + "\\iss_loops_wav");
     foreach (Track track in tracks)
     {
+        Console.WriteLine(track.getTitle());
         repo.add(track);
     }
 }
 else if (option != 1)
     Console.WriteLine("You're dumb");
+else
+    Console.WriteLine("No errors");
 
 public class Track
 {
@@ -131,11 +134,11 @@ internal class TrackCreator
         foreach (string fileName in files)
         {
             byte[] wavData = File.ReadAllBytes(fileName);
-            string name = fileName.Split(new char[] { '.' })[0];
+            string name = fileName.Split(new char[] { '\\' })[fileName.Split(new char[] { '\\' }).Length - 1].Split(new char[] { '.' })[0];
             string[] nameElements = name.Split(new char[] { '_' });
             nameElements[0] = nameElements[0].Substring(0, 1).ToUpper() + nameElements[0].Substring(1);
             nameElements[1] = nameElements[1].Substring(0, 1).ToUpper() + nameElements[1].Substring(1);
-            name = nameElements[0] + " " + nameElements[1] + " " + nameElements[2];
+            name = nameElements[0] + nameElements[1] + nameElements[2];
             int trackType = 0;
             if (fileName.Contains("drums"))
             {
@@ -178,7 +181,7 @@ internal class TrackRepository
     private string getConnectionString2()
     {
         return "Data Source=" + ip + ",1235;Initial Catalog=MusicDB;" +
-            "Integrated Security=true;Encrypt=False";
+            "User Id=user;Password=root;Encrypt=False";
     }
 
     private Track generateTrackFromRowObject(DataRow row)

@@ -3,8 +3,21 @@ BEGIN
     CREATE DATABASE [MusicDB]
 END
 
+IF NOT EXISTS(SELECT name FROM master.sys.server_principals WHERE name = 'user')
+BEGIN
+    CREATE LOGIN [user] WITH PASSWORD = 'root'
+END
 GO
-    USE [MusicDB]
+
+USE [MusicDB]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'user')
+BEGIN
+    CREATE USER [user] FOR LOGIN [user]
+    EXEC sp_addrolemember N'db_datawriter', N'user'
+    EXEC sp_addrolemember N'db_datareader', N'user'
+END
 GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='TRACK' and xtype='U')
@@ -18,6 +31,7 @@ BEGIN
 		UNIQUE(title),
 	);
 END
+GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='SONG' and xtype='U')
 BEGIN
@@ -30,6 +44,7 @@ BEGIN
 		UNIQUE(title),
 	);
 END
+GO
 
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='MUSICTAG' and xtype='U')
 BEGIN
@@ -40,3 +55,4 @@ BEGIN
 		UNIQUE(tag),
 	);
 END
+GO

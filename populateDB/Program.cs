@@ -19,21 +19,11 @@ int option = Convert.ToInt32(Console.ReadLine());
 TrackRepository repo = new TrackRepository(ip);
 if (option == 2)
 {
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_drums_1.wav", "house_drums_1.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_drums_2.wav", "house_drums_2.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_drums_3.wav", "house_drums_3.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_drums_4.wav", "house_drums_4.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_drums_5.wav", "house_drums_5.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_melody_1.wav", "house_melody_1.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_melody_2.wav", "house_melody_2.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_melody_3.wav", "house_melody_3.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_melody_4.wav", "house_melody_4.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_melody_5.wav", "house_melody_5.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_fx_1.wav", "house_fx_1.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_fx_2.wav", "house_fx_2.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_fx_3.wav", "house_fx_3.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_fx_4.wav", "house_fx_4.wav"));
-    repo.add(TrackCreator.CreateTrack(Environment.CurrentDirectory + "\\iss_loops_wav\\house_fx_5.wav", "house_fx_5.wav"));
+    List<Track> tracks = TrackCreator.CreateTracks(Environment.CurrentDirectory + "\\iss_loops_wav");
+    foreach (Track track in tracks)
+    {
+        repo.add(track);
+    }
 }
 else if (option != 1)
     Console.WriteLine("You're dumb");
@@ -76,6 +66,7 @@ public class Track
     {
         return type;
     }
+
 
     public void Play()
     {
@@ -133,28 +124,38 @@ public class Track
 
 internal class TrackCreator
 {
-    public static Track CreateTrack(string filepath, string filename)
+    public static List<Track> CreateTracks(string folderpath)
     {
-        byte[] wavData = File.ReadAllBytes(filepath);
-        string name = filename.Split(new char[] { '.' })[0];
-        int trackType = 0;
-        if (filename.Contains("drums"))
+        List<Track> tracks = new List<Track>();
+        string[] files = Directory.GetFiles(folderpath);
+        foreach (string fileName in files)
         {
-            trackType = 1;
+            byte[] wavData = File.ReadAllBytes(fileName);
+            string name = fileName.Split(new char[] { '.' })[0];
+            string[] nameElements = name.Split(new char[] { '_' });
+            nameElements[0] = nameElements[0].Substring(0, 1).ToUpper() + nameElements[0].Substring(1);
+            nameElements[1] = nameElements[1].Substring(0, 1).ToUpper() + nameElements[1].Substring(1);
+            name = nameElements[0] + " " + nameElements[1] + " " + nameElements[2];
+            int trackType = 0;
+            if (fileName.Contains("drums"))
+            {
+                trackType = 1;
+            }
+            if (fileName.Contains("melody"))
+            {
+                trackType = 2;
+            }
+            if (fileName.Contains("fx"))
+            {
+                trackType = 3;
+            }
+            if (fileName.Contains("voice"))
+            {
+                trackType = 4;
+            }
+            tracks.Add(new Track(1, name, trackType, wavData));
         }
-        if (filename.Contains("melody"))
-        {
-            trackType = 2;
-        }
-        if (filename.Contains("fx"))
-        {
-            trackType = 3;
-        }
-        if (filename.Contains("voice"))
-        {
-            trackType = 4;
-        }
-        return new Track(1, name, trackType, wavData);
+        return tracks;
     }
 }
 

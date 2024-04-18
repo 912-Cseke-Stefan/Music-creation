@@ -3,7 +3,6 @@ using Music.MusicDomain;
 using MusicCreator;
 using MusicCreator.Services;
 using System.Collections.ObjectModel;
-using NAudio.Wave;
 
 
 namespace MusicCreator;

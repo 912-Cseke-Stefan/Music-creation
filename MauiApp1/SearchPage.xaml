@@ -7,14 +7,21 @@
         <ScrollView>
             <StackLayout Padding="10">
                 <SearchBar x:Name="SearchBar" Placeholder="Search for tracks" SearchButtonPressed="OnSearchButtonPressed" />
-
+                    
                 <StackLayout>
-                    <ListView x:Name="TracksListView" ItemTapped="OnTrackTapped">
+                    <ListView x:Name="TracksListView" ItemTapped="OnTrackTapped" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Padding="10">
-                                        <Label Text="{Binding title}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding title}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 100, 0" />
+                                        <Button Text="Play" 
+                                            CommandParameter="{Binding id}"
+                                            Clicked="OnPlayClicked"
+                                            HorizontalOptions="End" 
+                                            Margin="0, 0, 50, 0"
+                                            
+                                            />
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
@@ -22,6 +29,13 @@
 
                     </ListView>
                 </StackLayout>
+                <Button Text="Back"
+                    Clicked="GoFromSearchToMainPage"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    WidthRequest="80"
+                    HeightRequest="40"/>
 
                 <StackLayout x:Name="ButtonsLayout">
                 </StackLayout>

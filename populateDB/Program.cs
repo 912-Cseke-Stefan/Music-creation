@@ -184,7 +184,7 @@ internal class TrackRepository
     private string getConnectionString2()
     {
         return "Data Source=" + ip + ",1235;Initial Catalog=MusicDB;" +
-            "User Id=user;Password=root;Encrypt=False";
+            "Integrated Security=true;Encrypt=False";
     }
 
     private Track generateTrackFromRowObject(DataRow row)

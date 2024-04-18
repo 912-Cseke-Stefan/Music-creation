@@ -86,5 +86,13 @@ namespace MusicCreator.Services
             _songRepository.add(_creationRepository.saveCreation(title));
         }
 
+        public void StopAll()
+        {
+            foreach (Track track in _trackRepository.getAll())
+            {
+                track.Stop();
+            }
+        }
+
     }
 }

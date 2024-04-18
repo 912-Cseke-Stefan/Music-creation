@@ -3,6 +3,7 @@ using Music.MusicDomain;
 using MusicCreator;
 using MusicCreator.Services;
 using System.Collections.ObjectModel;
+using NAudio.Wave;
 
 namespace MusicCreator;
 
@@ -17,7 +18,7 @@ public partial class SearchPage : ContentPage
         InitializeComponent();
 
         service = Service.GetService();
-
+        /*
         string queryCategory = Shell.Current.CurrentState.Location.Query;
       
         string[] parameter = queryCategory.TrimStart('?').Split('&');
@@ -48,6 +49,8 @@ public partial class SearchPage : ContentPage
         }
 
         tracksData = service.GetTracksByType(categoryInt);
+        */
+        tracksData = service.GetTracks();
         TracksListView.ItemsSource = tracksData;
         
 
@@ -60,8 +63,27 @@ public partial class SearchPage : ContentPage
     {
         Track track = e.Item as Track;
         service.AddTrack(track);
-       
+        service.StopAll();
+
         Shell.Current.GoToAsync("Main");
+    }
+
+    public void OnPlayClicked(object sender, EventArgs e)
+    {
+
+        //TO DO
+        //PLAY THE TRACK
+        service.StopAll();
+        int id = (int)((Button)sender).CommandParameter;
+        Track track = service.GetTrackById(id);
+        track.Play();
+
+    }
+
+    public async void GoFromSearchToMainPage(object sender, EventArgs e)
+    {
+        service.StopAll();
+        await Shell.Current.GoToAsync("Main");
     }
 
     // Method to create dynamic buttons for sentences containing the search query

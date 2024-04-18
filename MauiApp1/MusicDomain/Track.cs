@@ -72,7 +72,7 @@ namespace Music.MusicDomain
 
     internal class Track
     {
-        private int id;
+        public int id { get; }
         public string title { get; }
 
         private int type; // 1 - drums, 2 - instrument, 3 - fx, 4 - voice

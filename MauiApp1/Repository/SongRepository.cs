@@ -21,13 +21,13 @@ namespace MusicCreator.Repository
 
         private string getConnectionString()
         {
-            return "Data Source=192.168.1.225,1235;" +
+            return "Data Source=192.168.232.18,1235;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
         private string getConnectionString2()
         {
-            return "Data Source=192.168.1.225,1235;Initial Catalog=MusicDB;" +
+            return "Data Source=192.168.232.18,1235;Initial Catalog=MusicDB;" +
                 "Integrated Security=true;Encrypt=False";
         }
 

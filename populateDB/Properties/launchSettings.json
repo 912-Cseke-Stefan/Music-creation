@@ -2,7 +2,7 @@
   "profiles": {
     "sql": {
       "commandName": "Project",
-      "workingDirectory": "D:\\Facultate\\sem4\\se\\Music-creation\\populateDB"
+      "workingDirectory": "C:\\Users\\Tudor\\Desktop\\github\\Music-creation\\populateDB"
     }
   }
 }

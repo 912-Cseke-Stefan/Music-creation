@@ -8,6 +8,7 @@ using Microsoft.Data.SqlClient;
 using Music.MusicDomain;
 using System.Text.RegularExpressions;
 
+
 namespace MusicCreator.Repository
 {
     internal class TrackRepository : ITrackRepository
@@ -18,16 +19,17 @@ namespace MusicCreator.Repository
         private DataTable? table;
         private string query;
         private SqlCommandBuilder cmdBuild;
+        private List<Track> tracks;
 
         private string getConnectionString()
         {
-            return "Data Source=192.168.1.225,1235;" +
+            return "Data Source=192.168.33.181,1235;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
         private string getConnectionString2()
         {
-            return "Data Source=192.168.1.225,1235;Initial Catalog=MusicDB;" +
+            return "Data Source=192.168.33.181,1235;Initial Catalog=MusicDB;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
@@ -45,6 +47,7 @@ namespace MusicCreator.Repository
             // initializing connection
             conn = new SqlConnection(getConnectionString());
             query = "select * from TRACK";
+            tracks = null;
 
             // creating database and tables if they do not exist already (from script)
             /*conn.Open();
@@ -115,9 +118,12 @@ namespace MusicCreator.Repository
 
         public List<Track> getAll()
         {
+            if (tracks != null)
+                return tracks;
             var elems = from DataRow row in table.Rows
                         select generateTrackFromRowObject(row);
-            return elems.ToList();
+            tracks = elems.ToList();
+            return tracks;
         }
     }
 }

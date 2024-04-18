@@ -1,22 +1,26 @@
 using Music.MusicDomain;
 using MusicCreator.Services;
+using System.Text.Json.Serialization.Metadata;
 
 namespace MusicCreator;
 
 public partial class MainPageApp : ContentPage
 {
     Service service = Service.GetService();
+    List<Track> auxList;
     bool isButtonClicked;
 
     public MainPageApp()
 	{
+  
 		InitializeComponent();
-        List<Track> auxList = service.GetCreationTracks();
+        auxList = service.GetCreationTracks();
         List<string> items = (from t in auxList
                              select t.getTitle()).ToList();
 
         tracksListView.ItemsSource = items;
         isButtonClicked = false;
+
     }
 
     private void OnDeleteClicked(object sender, EventArgs e)
@@ -24,7 +28,8 @@ public partial class MainPageApp : ContentPage
         if (sender is Button { CommandParameter: string item } && tracksListView.ItemsSource is List<string> items)
         {
             items.Remove(item);
-            
+            int trackId = auxList.Find(x => x.getTitle() == item).getId();
+            service.RemoveTrack(trackId);
             tracksListView.ItemsSource = null;
             tracksListView.ItemsSource = items;
         }

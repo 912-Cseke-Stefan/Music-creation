@@ -21,13 +21,13 @@ namespace MusicCreator.Repository
 
         private string getConnectionString()
         {
-            return "Data Source=10.152.0.159,1235;" +
+            return "Data Source=192.168.33.181,1235;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
         private string getConnectionString2()
         {
-            return "Data Source=10.152.0.159,1235;Initial Catalog=MusicDB;" +
+            return "Data Source=192.168.33.181,1235;Initial Catalog=MusicDB;" +
                 "Integrated Security=true;Encrypt=False";
         }
 
@@ -46,7 +46,7 @@ namespace MusicCreator.Repository
 
             // creating database and tables if they do not exist already (from script)
             conn.Open();
-            FileInfo fileInfo = new FileInfo("D:\\Facultate\\sem4\\se\\Music-creation\\MauiApp1\\Repository\\dbcreate.sql");
+            FileInfo fileInfo = new FileInfo("C:\\Users\\Tudor\\Desktop\\github\\Music-creation\\MauiApp1\\Repository\\dbcreate.sql");
             string script = fileInfo.OpenText().ReadToEnd();
             Regex regex = new Regex("^GO", RegexOptions.IgnoreCase | RegexOptions.Multiline);
             string[] lines = regex.Split(script);

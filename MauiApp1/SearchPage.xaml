@@ -14,7 +14,15 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Padding="10">
-                                        <Label Text="{Binding title}" />
+                                        <Label Text="{Binding title}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 100, 0" />
+                                        <Button Text="Play" 
+                                            CommandParameter="{Binding id}"
+                                            Clicked="OnPlayClicked"
+                                            HorizontalOptions="End" 
+                                            Margin="0, 0, 50, 0"
+                                            
+                                            />
+                                        
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

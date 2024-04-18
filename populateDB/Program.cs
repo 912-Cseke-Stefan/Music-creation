@@ -131,11 +131,16 @@ internal class TrackCreator
         foreach (string fileName in files)
         {
             byte[] wavData = File.ReadAllBytes(fileName);
-            string name = fileName.Split(new char[] { '.' })[0];
-            string[] nameElements = name.Split(new char[] { '_' });
-            nameElements[0] = nameElements[0].Substring(0, 1).ToUpper() + nameElements[0].Substring(1);
-            nameElements[1] = nameElements[1].Substring(0, 1).ToUpper() + nameElements[1].Substring(1);
-            name = nameElements[0] + " " + nameElements[1] + " " + nameElements[2];
+        
+            string[] nameElements = fileName.Split(new char[] { '\\' });
+            string name = nameElements[nameElements.Length - 1];
+            name = name.Split(new char[] { '.' })[0];
+            nameElements = name.Split(new char[] { '_' });
+            name = nameElements.Aggregate((a, b) => a + " " + b);
+            name = char.ToUpper(name[0]) + name.Substring(1);
+            Console.WriteLine(name);
+            
+            Console.WriteLine(name);
             int trackType = 0;
             if (fileName.Contains("drums"))
             {
@@ -221,8 +226,8 @@ internal class TrackRepository
         // filling dataset
         adapter = new SqlDataAdapter(query, conn);
         dataset = new DataSet();
-        adapter.Fill(dataset, "Track");
-        table = dataset.Tables["Track"]; // this should be a shallow copy
+        adapter.Fill(dataset, "TRACK");
+        table = dataset.Tables["TRACK"]; // this should be a shallow copy
 
         // building commands for the adapter
         cmdBuild = new SqlCommandBuilder(adapter);
@@ -237,7 +242,7 @@ internal class TrackRepository
         row["track_type"] = elem.getType();
         row["audio"] = elem.getSongData();
         table.Rows.Add(row);
-        adapter.Update(dataset, "Track");
+        adapter.Update(dataset, "TRACK");
     }
 
     public void delete(Track elem)

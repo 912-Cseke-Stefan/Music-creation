@@ -1,5 +1,6 @@
 using Music.MusicDomain;
 using MusicCreator.Services;
+using System.Text.Json.Serialization.Metadata;
 
 namespace MusicCreator;
 
@@ -11,6 +12,7 @@ public partial class MainPageApp : ContentPage
 
     public MainPageApp()
 	{
+  
 		InitializeComponent();
         auxList = service.GetCreationTracks();
         List<string> items = (from t in auxList
@@ -18,6 +20,7 @@ public partial class MainPageApp : ContentPage
 
         tracksListView.ItemsSource = items;
         isButtonClicked = false;
+
     }
 
     private void OnDeleteClicked(object sender, EventArgs e)

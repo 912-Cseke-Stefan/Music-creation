@@ -8,6 +8,7 @@ using Microsoft.Data.SqlClient;
 using Music.MusicDomain;
 using System.Text.RegularExpressions;
 
+
 namespace MusicCreator.Repository
 {
     internal class TrackRepository : ITrackRepository
@@ -18,6 +19,7 @@ namespace MusicCreator.Repository
         private DataTable? table;
         private string query;
         private SqlCommandBuilder cmdBuild;
+        private List<Track> tracks;
 
         private string getConnectionString()
         {
@@ -88,9 +90,12 @@ namespace MusicCreator.Repository
 
         public List<Track> getAll()
         {
+            if (tracks != null)
+                return tracks;
             var elems = from DataRow row in table.Rows
                         select generateTrackFromRowObject(row);
-            return elems.ToList();
+            tracks = elems.ToList();
+            return tracks;
         }
     }
 }

@@ -51,12 +51,24 @@ public partial class SearchPage : ContentPage
         //SearchBar.SearchButtonPressed += OnSearchButtonPressed;
     }
 
-    
+    public void OnPlayClicked(object sender, EventArgs e)
+    {
+
+        //TO DO
+        //PLAY THE TRACK
+        service.StopAll();
+        int id = (int)((Button)sender).CommandParameter;
+        Track track = service.GetTrackById(id);
+        track.Play();
+
+    }
+
 
     public void OnTrackTapped(object sender, ItemTappedEventArgs e)
     {
         Track track = e.Item as Track;
         service.AddTrack(track);
+        service.StopAll();
        
         Shell.Current.GoToAsync("Main");
     }

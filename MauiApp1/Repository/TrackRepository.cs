@@ -21,7 +21,7 @@ namespace MusicCreator.Repository
 
         private string getConnectionString()
         {
-            return "Data Source=192.168.43.73,1235;Initial Catalog=MusicDB;" +
+            return "Data Source=192.168.202.233,1235;Initial Catalog=MusicDB;" +
                 "User Id=user;Password=root;Encrypt=False";
         }
 

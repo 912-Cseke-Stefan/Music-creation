@@ -3,6 +3,8 @@ using Music.MusicDomain;
 using MusicCreator;
 using MusicCreator.Services;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls;
+
 
 namespace MusicCreator;
 
@@ -17,20 +19,17 @@ public partial class SearchPage : ContentPage
         InitializeComponent();
 
         service = Service.GetService();
+        //q: how do I get the parameter from the query string?
+        //a: I can get the query string from the location property of the current state of the shell
 
-        string queryCategory = Shell.Current.CurrentState.Location.Query;
-      
-        string[] parameter = queryCategory.TrimStart('?').Split('&');
-        string[] parts = parameter[0].Split('=');
-        string category = parts[1];
-
+        string category = service.category;
         int categoryInt;
 
-        if (category == "drum")
+        if (category == "drums")
         {
             categoryInt = 1;
         }
-        else if(category == "instrument")
+        else if(category == "music")
         {
             categoryInt = 2;
         }
@@ -38,7 +37,7 @@ public partial class SearchPage : ContentPage
         {
             categoryInt = 3;
         }
-        else if(category == "voice")
+        else if(category == "mic")
         {
             categoryInt = 4;
         }
@@ -54,7 +53,8 @@ public partial class SearchPage : ContentPage
         //SearchBar.SearchButtonPressed += OnSearchButtonPressed;
     }
 
-    
+
+
 
     public void OnTrackTapped(object sender, ItemTappedEventArgs e)
     {

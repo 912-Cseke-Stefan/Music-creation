@@ -43,8 +43,8 @@ public partial class MainPageApp : ContentPage
     {
         Button button = (Button)sender;
         string category = button.Text.ToLower();
-
-        await Shell.Current.GoToAsync($"Search?category={category}");
+        service.category = category;
+        await Shell.Current.GoToAsync("Search");
     }
     
     private async void GoFromMainToSavePage(object sender, EventArgs e)

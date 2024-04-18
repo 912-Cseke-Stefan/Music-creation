@@ -21,14 +21,8 @@ namespace MusicCreator.Repository
 
         private string getConnectionString()
         {
-            return "Data Source=10.152.0.159,1235;" +
-                "Integrated Security=true;Encrypt=False";
-        }
-
-        private string getConnectionString2()
-        {
-            return "Data Source=10.152.0.159,1235;Initial Catalog=MusicDB;" +
-                "Integrated Security=true;Encrypt=False";
+            return "Data Source=192.168.43.73,1235;Initial Catalog=MusicDB;" +
+                "User Id=user;Password=root;Encrypt=False";
         }
 
         private MusicTag generateMusicTagFromRowObject(DataRow row)
@@ -41,28 +35,8 @@ namespace MusicCreator.Repository
         public MusigTagRepository() 
         {
             // initializing connection
-            conn = new SqlConnection(getConnectionString());
             query = "select * from MUSICTAG";
-
-            // creating database and tables if they do not exist already (from script)
-            conn.Open();
-            FileInfo fileInfo = new FileInfo("D:\\Facultate\\sem4\\se\\Music-creation\\MauiApp1\\Repository\\dbcreate.sql");
-            string script = fileInfo.OpenText().ReadToEnd();
-            Regex regex = new Regex("^GO", RegexOptions.IgnoreCase | RegexOptions.Multiline);
-            string[] lines = regex.Split(script);
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.Connection = conn;
-            foreach (string line in lines)
-            {
-                cmd.CommandText = line;
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-            }
-            conn.Close();
-
-            // reconnecting to the database with another connection string
-            // there might be a cleaner way; I didn't find it, good luck to you
-            conn = new SqlConnection(getConnectionString2());
+            conn = new SqlConnection(getConnectionString());
 
             // filling dataset
             adapter = new SqlDataAdapter(query, conn);

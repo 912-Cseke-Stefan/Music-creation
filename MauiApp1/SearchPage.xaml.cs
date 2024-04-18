@@ -18,7 +18,7 @@ public partial class SearchPage : ContentPage
 
         service = Service.GetService();
 
-        string queryCategory = Shell.Current.CurrentState.Location.Query;
+        /*string queryCategory = Shell.Current.CurrentState.Location.Query;
       
         string[] parameter = queryCategory.TrimStart('?').Split('&');
         string[] parts = parameter[0].Split('=');
@@ -45,9 +45,9 @@ public partial class SearchPage : ContentPage
         else
         {
             categoryInt = 0;
-        }
+        }*/
 
-        tracksData = service.GetTracksByType(categoryInt);
+        tracksData = service.GetTracks();
         TracksListView.ItemsSource = tracksData;
         
 

@@ -125,7 +125,8 @@ namespace Music.MusicDomain
                 loop.EnableLooping = true;
 
                 waveOut.Dispose();
-                waveOut.Init(loop);
+                //waveOut.Init(loop);
+                waveOut.Init(waveStream);
                 waveOut.Play();
             }
         }
